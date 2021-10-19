@@ -77,7 +77,7 @@ class CharacterSheetController extends Controller
     public function show(Request $request,$id)
     {
         $characterSheet = CharacterSheet::find($id);
-        if($characterSheet->count() === 0)
+        if(!$characterSheet)
             if($request->expectsJson())
                 return ResponseBuilder::error(ApiCodes::NOT_EXISTS);
             else

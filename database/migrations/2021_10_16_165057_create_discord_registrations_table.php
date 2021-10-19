@@ -15,9 +15,9 @@ class CreateDiscordRegistrationsTable extends Migration
     {
         Schema::create('discord_registrations', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('guild_id');
-            $table->bigInteger('member_id')->unique();
-            $table->bigInteger('steam_id')->unique();
+            $table->bigInteger('guild_id')->index();
+            $table->bigInteger('member_id')->index();
+            $table->bigInteger('steam_id')->index();
             $table->string('username');
             $table->timestamps();
         });

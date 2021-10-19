@@ -6,7 +6,7 @@
   * */
 
  class ApiCodes {
-    public const FAILED_SAVING = 20;
+    public const FAILED_SAVING = 100;
     public const MISSING_PARAMETERS = 250;
     public const INVALID_INPUT = 251;
     public const NOT_REGISTERED = 260;

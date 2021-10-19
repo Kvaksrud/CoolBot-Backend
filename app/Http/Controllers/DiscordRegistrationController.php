@@ -10,6 +10,8 @@ use MarcinOrlowski\ResponseBuilder\ResponseBuilder;
 
 class DiscordRegistrationController extends Controller
 {
+    const DISCORD_ID_REGEX = '/^[0-9]{2,20}$/';
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +45,7 @@ class DiscordRegistrationController extends Controller
             if($request->expectsJson())
                 return ResponseBuilder::error(ApiCodes::MISSING_PARAMETERS);
 
-        if(!preg_match('/^[0-9]{2,20}$/',$request->get('guild_id')))
+        if(!preg_match(self::DISCORD_ID_REGEX,$request->get('guild_id')))
             return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['guild_id'=>['Guild ID must be numeric and between 2-20 characters.']]);
 
         if(DiscordRegistration::where('guild_id','=',(int)$request->get('guild_id'))->where('member_id','=',$request->get('member_id'))->get()->count() > 0)
@@ -70,13 +72,13 @@ class DiscordRegistrationController extends Controller
      */
     public function show(Request $request,$id)
     {
-        if($request->has('guild_id') === false)
-            return ResponseBuilder::error(ApiCodes::MISSING_PARAMETERS,null,['guild_id']);
+        if($request->has(['discord_identifier'])) { // Look using member id and guild id instead of id of row
+            if($request->has('guild_id') === false)
+                return ResponseBuilder::error(ApiCodes::MISSING_PARAMETERS,null,['guild_id']);
 
-        if(!preg_match('/^[0-9]{2,20}$/',$request->get('guild_id')))
-            return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['guild_id'=>['Guild ID must be numeric and between 2-20 characters.']]);
+            if(!preg_match(self::DISCORD_ID_REGEX,$request->get('guild_id')))
+                return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['guild_id'=>['Guild ID must be numeric and between 2-20 characters.']]);
 
-        if(strlen($id) >= 17) { // Discord ID is 17 long or longer. We'll never reach 17 digits on our registration id's
             try {
                 $registration = DiscordRegistration::where('guild_id','=',(int)$request->get('guild_id'))->where('member_id','=',$id)->first();
             } catch (Exception $e) {
@@ -96,7 +98,7 @@ class DiscordRegistrationController extends Controller
 
         if(!$registration)
             if($request->expectsJson())
-                return ResponseBuilder::error(ApiCodes::NOT_REGISTERED);
+                return ResponseBuilder::error(ApiCodes::NOT_REGISTERED,null,['discord_identifier' => $request->has('discord_identifier')]);
 
         if($request->expectsJson())
             return ResponseBuilder::success($registration);
