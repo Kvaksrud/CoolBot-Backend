@@ -15,8 +15,8 @@ class CreateCharacterSheetsTable extends Migration
     {
         Schema::create('character_sheets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('discord_registration_id');
-            $table->enum('type',['cache','injection']);
+            $table->unsignedInteger('discord_registration_id')->index();
+            $table->string('type');
             $table->json('content');
             $table->timestamps();
         });

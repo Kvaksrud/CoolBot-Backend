@@ -1,64 +1,71 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# CoolBot Backend
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## How-to set up your own development platform
 
-## About Laravel
+### Software List
+| Software | Required | Notes |
+| -------- | -------- | ----- |
+| [Github for Windows](https://gitforwindows.org/) | Yes | Required to download and upload source code
+| [Docker](https://docs.docker.com/desktop/windows/install/) | Yes | Prerequisite: Enable virtualization technology on your CPU and install [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package) (Step 4 and 5) |
+| [Composer](https://getcomposer.org/Composer-Setup.exe) | Yes | Requires Composer 2.x |
+| [Node.js](https://nodejs.org/en/download/current/) | Yes | Requires version 17.0.x |
+| [PHP](https://windows.php.net/download/#php-7.4) | Yes | Requires version 7.4.x VC15 x64 Non Thread Safe. Place in C:\php and [add C:\php to PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/) for your user  |
+| [Visual Studio Code](https://code.visualstudio.com/) | No (Optional) | For writing code. Install extension ESlint
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Clone source code
+To work on the code, you first have to clone it and branch it. You are not allowed to commit directly to ``main`` or ``dev`` branches as these are protected.
+1. Open ``cmd`` or ``PowerShell`` in the parent directory of where you want the source code (e.g: C:\Github)
+2. Run ``git clone https://github.com/Kvaksrud/CoolBot-Backend.git`` and it will create a sub-folder called ``CoolBot-Backend``.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Set up FTP Directory
+Open ``cmd.exe`` and run the following commands:
+```
+mkdir C:\ftp
+robocopy /MIR C:\Github\CoolBot-Backend\storage\ftp-demo-data C:\ftp
+```
+You can run the robocopy command again if you want to reset the FTP server contents. 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Set up Docker
+Open ``cmd.exe`` and run the following to create the supporting docker containers for the backend:
+```
+docker run --name "dev-mariadb-10.6.4" -p 127.0.0.1:3306:3306 -e MARIADB_ROOT_PASSWORD=passw0rd -d mariadb:10.6.4
+docker run --name "dev-phpmyadmin-latest" -d --link "dev-mariadb-10.6.4:db" -p 127.0.0.1:8081:80 phpmyadmin:latest
+docker run --name "dev-mock-ftp-server" -d -p 127.0.0.1:21:21 -p 127.0.0.1:21000-21010:21000-21010 -e USERS="ftpuser|passw0rd|/data" -e ADDRESS=127.0.0.1 -v C:/ftp:/data delfer/alpine-ftp-server
+```
 
-## Learning Laravel
+### Set up the database
+When the Docker containers are running, open [PhpMyAdmin](http://localhost:8081) at ``http://localhost:8081`` and login with username ``root`` and password ``passw0rd``.
+Run the following SQL Query:
+```
+CREATE DATABASE IF NOT EXISTS coolbot_backend;
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Set up Laravel
+The backend is built on the [Laravel](https://laravel.com/docs/8.x/readme) 8 PHP Framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Prepare the frameork and serve the web page
+To prepare the backend for runtime follow these instructions:
+1. Open ``cmd`` or ``PowerShell`` in the directory where you cloned the backend source code
+2. Run ``cp .env.example .env``
+3. Open ``.env`` in your ``Visial Studio Code`` or your favourite text editor and fill inn all appropriate values (see table below for required fields) and save 
+4. Run ``composer install``
+5. Run ``npm install``
+6. Run ``php artisan key:generate``
+7. Run ``php artisan migrate:fresh`` (this can also be run to clean your database of any records, like a "fresh start")
+8. Run ``php artisan serve`` (This step makes a web-site available on [http://localhost:8000](http://localhost:8000))
 
-## Laravel Sponsors
+#### Fill out demo data
+The demo data will create a user with username ``user@domain.com`` with the password ``passw0rd`` that can be used to log in to the web interface.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Open ``cmd`` or ``PowerShell`` in the directory where you cloned the backend source code
+2. Run ``php artisan tinker`` (This enters a live CLI session with php against the database)
+3. Run 
+   ```
+   $user = new User();
+   $user->name = 'Demo User';
+   $user->email = 'user@domain.com';
+   $user->password = Hash::make('passw0rd');
+   $user->save();
+   $user->createToken('Demo-Token');
+   ```
+4. Copy the ``plainTextToken`` that looks like this ``1|o4fiL63MCmBIfNHJtTczDvLxWwy7MLRchvgRg2t4`` and put it into the ``.env`` file in ``CollBot`s`` source directory as the variable value of ``COOLBOT_BACKEND_API_TOKEN`` parameter. This makes it so the bot can talk to backend.
