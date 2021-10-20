@@ -12,12 +12,25 @@
 | [PHP](https://windows.php.net/download/#php-7.4) | Yes | Requires version 7.4.x VC15 x64 Non Thread Safe. Place in C:\php and [add C:\php to PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/) for your user  |
 | [Visual Studio Code](https://code.visualstudio.com/) | No (Optional) | For writing code. Install extension ESlint
 
+### Clone source code
+To work on the code, you first have to clone it and branch it. You are not allowed to commit directly to ``main`` or ``dev`` branches as these are protected.
+1. Open ``cmd`` or ``PowerShell`` in the parent directory of where you want the source code (e.g: C:\Github)
+2. Run ``git clone https://github.com/Kvaksrud/CoolBot-Backend.git`` and it will create a sub-folder called ``CoolBot-Backend``.
+
+### Set up FTP Directory
+Open ``cmd.exe`` and run the following commands:
+```
+mkdir C:\ftp
+robocopy /MIR C:\Github\CoolBot-Backend\storage\ftp-demo-data C:\ftp
+```
+You can run the robocopy command again if you want to reset the FTP server contents. 
 
 ### Set up Docker
 Open ``cmd.exe`` and run the following to create the supporting docker containers for the backend:
 ```
 docker run --name "dev-mariadb-10.6.4" -p 127.0.0.1:3306:3306 -e MARIADB_ROOT_PASSWORD=passw0rd -d mariadb:10.6.4
 docker run --name "dev-phpmyadmin-latest" -d --link "dev-mariadb-10.6.4:db" -p 127.0.0.1:8081:80 phpmyadmin:latest
+docker run --name "dev-mock-ftp-server" -d -p 127.0.0.1:21:21 -p 127.0.0.1:21000-21010:21000-21010 -e USERS="ftpuser|passw0rd|/data" -e ADDRESS=127.0.0.1 -v C:/ftp:/data delfer/alpine-ftp-server
 ```
 
 ### Set up the database
@@ -26,11 +39,6 @@ Run the following SQL Query:
 ```
 CREATE DATABASE IF NOT EXISTS coolbot_backend;
 ```
-
-### Clone source code
-To work on the code, you first have to clone it and branch it. You are not allowed to commit directly to ``main`` or ``dev`` branches as these are protected.
-1. Open ``cmd`` or ``PowerShell`` in the parent directory of where you want the source code (e.g: C:\Github)
-2. Run ``git clone https://github.com/Kvaksrud/CoolBot-Backend.git`` and it will create a sub-folder called ``CoolBot-Backend``.
 
 ### Set up Laravel
 The backend is built on the [Laravel](https://laravel.com/docs/8.x/readme) 8 PHP Framework.
@@ -42,8 +50,9 @@ To prepare the backend for runtime follow these instructions:
 3. Open ``.env`` in your ``Visial Studio Code`` or your favourite text editor and fill inn all appropriate values (see table below for required fields) and save 
 4. Run ``composer install``
 5. Run ``npm install``
-6. Run ``php artisan migrate:fresh`` (this can also be run to clean your database of any records, like a "fresh start")
-7. Run ``php artisan serve`` (This step makes a web-site available on [http://localhost:8000](http://localhost:8000))
+6. Run ``php artisan key:generate``
+7. Run ``php artisan migrate:fresh`` (this can also be run to clean your database of any records, like a "fresh start")
+8. Run ``php artisan serve`` (This step makes a web-site available on [http://localhost:8000](http://localhost:8000))
 
 #### Fill out demo data
 The demo data will create a user with username ``user@domain.com`` with the password ``passw0rd`` that can be used to log in to the web interface.
