@@ -48,11 +48,11 @@ class DiscordRegistrationController extends Controller
         if(!preg_match(self::DISCORD_ID_REGEX,$request->get('guild_id')))
             return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['guild_id'=>['Guild ID must be numeric and between 2-20 characters.']]);
 
-        if(DiscordRegistration::where('guild_id','=',(int)$request->get('guild_id'))->where('member_id','=',$request->get('member_id'))->get()->count() > 0)
+        if(DiscordRegistration::where('guild_id','=',$request->get('guild_id'))->where('member_id','=',$request->get('member_id'))->get()->count() > 0)
             return ResponseBuilder::error(ApiCodes::ALREADY_REGISTERED);
 
         $registration = new DiscordRegistration();
-        $registration->guild_id = (int)$request->get('guild_id');
+        $registration->guild_id = $request->get('guild_id');
         $registration->member_id = $request->get('member_id');
         $registration->steam_id = $request->get('steam_id');
         $registration->username = $request->get('username');
@@ -70,7 +70,7 @@ class DiscordRegistrationController extends Controller
      * @param  \App\Models\DiscordRegistration  $discordRegistration
      * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response
      */
-    public function show(Request $request,$id)
+    public function show(Request $request,string $id)
     {
         if($request->has(['discord_identifier'])) { // Look using member id and guild id instead of id of row
             if($request->has('guild_id') === false)
@@ -80,7 +80,7 @@ class DiscordRegistrationController extends Controller
                 return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['guild_id'=>['Guild ID must be numeric and between 2-20 characters.']]);
 
             try {
-                $registration = DiscordRegistration::where('guild_id','=',(int)$request->get('guild_id'))->where('member_id','=',$id)->first();
+                $registration = DiscordRegistration::where('guild_id','=',$request->get('guild_id'))->where('member_id','=',$id)->first();
             } catch (Exception $e) {
                 if ($request->expectsJson() === true)
                     return ResponseBuilder::error(500,null,$e->getMessage());
