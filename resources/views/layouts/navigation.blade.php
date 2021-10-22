@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('user.tokens')" :active="request()->routeIs('user.tokens')">
                         {{ __('user.my-tokens') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('BankAccount.index')" :active="request()->routeIs('BankAccount.index')">
+                        {{ __('bank.bank-accounts') }}
+                    </x-nav-link>
                 </div>
             </div>
 

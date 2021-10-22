@@ -24,6 +24,9 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::get('/user/tokens',[\App\Http\Controllers\UserController::class,'token_index'])->name('user.tokens');
+    Route::resource('BankAccount', \App\Http\Controllers\BankAccountController::class)->only([
+        'index','show'
+    ]);
 });
 
 require __DIR__.'/auth.php';

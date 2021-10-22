@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\ApiCodes;
 use App\Models\DiscordRegistration;
+use App\RegexPatterns;
 use Exception;
 use Illuminate\Http\Request;
 use MarcinOrlowski\ResponseBuilder\ResponseBuilder;
 
 class DiscordRegistrationController extends Controller
 {
-    const DISCORD_ID_REGEX = '/^[0-9]{2,20}$/';
 
     /**
      * Display a listing of the resource.
@@ -45,8 +45,8 @@ class DiscordRegistrationController extends Controller
             if($request->expectsJson())
                 return ResponseBuilder::error(ApiCodes::MISSING_PARAMETERS);
 
-        if(!preg_match(self::DISCORD_ID_REGEX,$request->get('guild_id')))
-            return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['guild_id'=>['Guild ID must be numeric and between 2-20 characters.']]);
+        if(!preg_match(RegexPatterns::DISCORD_ID_REGEX,$request->get('guild_id')))
+            return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['guild_id'=>'Guild ID must be numeric and between 2-20 characters.']);
 
         if(DiscordRegistration::where('guild_id','=',$request->get('guild_id'))->where('member_id','=',$request->get('member_id'))->get()->count() > 0)
             return ResponseBuilder::error(ApiCodes::ALREADY_REGISTERED);
@@ -76,7 +76,7 @@ class DiscordRegistrationController extends Controller
             if($request->has('guild_id') === false)
                 return ResponseBuilder::error(ApiCodes::MISSING_PARAMETERS,null,['guild_id']);
 
-            if(!preg_match(self::DISCORD_ID_REGEX,$request->get('guild_id')))
+            if(!preg_match(RegexPatterns::DISCORD_ID_REGEX,$request->get('guild_id')))
                 return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['guild_id'=>['Guild ID must be numeric and between 2-20 characters.']]);
 
             try {

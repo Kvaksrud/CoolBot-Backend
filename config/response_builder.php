@@ -37,6 +37,8 @@ return [
         \App\ApiCodes::ALREADY_REGISTERED => 'api.already-registered',
         \App\ApiCodes::INVALID_TYPE => 'api.invalid-type',
         \App\ApiCodes::NOT_EXISTS => 'api.not-exists',
+        \App\ApiCodes::INSUFFICIENT_FUNDS => 'api.insufficient-funds',
+        \App\ApiCodes::NO_BANK_ACCOUNT => 'api.no-bank-account',
 	],
 
 	/*

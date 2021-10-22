@@ -16,5 +16,8 @@ class DiscordRegistration extends Model
 {
     use HasFactory;
 
-
+    public function bankAccount(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(BankAccount::class,'discord_registration_id','id');
+    }
 }

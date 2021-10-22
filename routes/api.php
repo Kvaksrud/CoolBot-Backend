@@ -29,4 +29,16 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('CharacterSheet', \App\Http\Controllers\CharacterSheetController::class)->only([
         'show','store'
     ]);
+
+    // Bank Transactions
+    Route::post('BankTransaction/Transfer', [\App\Http\Controllers\BankTransactionController::class, 'transfer']);
+    Route::post('BankTransaction/Send', [\App\Http\Controllers\BankTransactionController::class, 'send']);
+    Route::resource('BankTransaction', \App\Http\Controllers\BankTransactionController::class)->only([
+        'store'
+    ]);
+
+    // BankAccount
+    Route::resource('BankAccount', \App\Http\Controllers\BankAccountController::class)->only([
+        'show'
+    ]);
 });

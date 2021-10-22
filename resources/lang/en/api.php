@@ -19,5 +19,7 @@ return [
     'already-registered' => 'The member in that guild is already registered',
     'invalid-type' => 'Invalid type provided',
     'invalid-input' => 'One or more of the provided input parameters are invalid',
-    'not-exists' => 'The resource does not exist'
+    'not-exists' => 'The resource does not exist',
+    'insufficient-funds' => 'Insufficient funds',
+    'no-bank-account' => 'The member has no bank account. Deposit money before trying to transfer it',
 ];
