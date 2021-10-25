@@ -21,7 +21,8 @@ class BankTransaction extends Model
         'type',
         'target',
         'amount',
-        'description'
+        'description',
+        'timer',
     ];
 
     public function bankAccount(): \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -20,6 +20,7 @@ class CreateBankTransactionsTable extends Migration
             $table->enum('target',['wallet','balance']);
             $table->bigInteger('amount');
             $table->string('description');
+            $table->string('timer')->default(null);
             $table->timestamps();
         });
     }

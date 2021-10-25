@@ -33,6 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Bank Transactions
     Route::post('BankTransaction/Transfer', [\App\Http\Controllers\BankTransactionController::class, 'transfer']);
     Route::post('BankTransaction/Send', [\App\Http\Controllers\BankTransactionController::class, 'send']);
+    Route::get('BankTransaction/Search', [\App\Http\Controllers\BankTransactionController::class, 'search']);
     Route::resource('BankTransaction', \App\Http\Controllers\BankTransactionController::class)->only([
         'store'
     ]);

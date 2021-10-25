@@ -78,6 +78,12 @@ class BankTransactionController extends Controller
             ]);
         }
 
+        // Type
+        if($request->has(['timer']))
+            $timer = $request->get('timer');
+        else
+            $timer = null;
+
         if($request->get('type') === 'deposit'){ // Add money
             $amount = $request->get('amount');
         } elseif($request->get('type') === 'withdraw'){ // Remove money
@@ -103,6 +109,7 @@ class BankTransactionController extends Controller
             'target' => $request->get('target'),
             'amount' => $amount,
             'description' => $request->get('description'),
+            'timer' => $timer,
         ]);
 
         return ResponseBuilder::success(BankTransaction::with('bankAccount')->find($transaction->id));
@@ -281,6 +288,44 @@ class BankTransactionController extends Controller
             ],
             'bankAccount' => BankAccount::find($memberFrom->id)
         ]);
+    }
+
+    /**
+     * Search for the specified resource.
+     *
+     * @param  \App\Models\BankTransaction  $bankTransaction
+     * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response
+     */
+    public function search(Request $request)
+    {
+        if($request->has(['guild_id','member_id','type']) === false)
+            return ResponseBuilder::error(ApiCodes::MISSING_PARAMETERS);
+
+        if($request->has(['limit']) === false and !is_numeric($request->get('limit')))
+            $limit = 25;
+        else {
+            $limit = $request->get('limit');
+        }
+
+        if($request->has(['timer']) === false)
+            $timer = null;
+        else {
+            $timer = $request->get('timer');
+        }
+
+        $guild_id = $request->get('guild_id');
+        $member_id = $request->get('member_id');
+        $search = BankTransaction::whereHas('bankAccount', function($bankAccount) use($guild_id,$member_id){
+            //'bankAccount.holder.guild_id','=',$request->get('guild_id')
+            $bankAccount->whereHas('holder', function($holder) use($guild_id,$member_id){
+                $holder->where('guild_id','=',$guild_id)->where('member_id','=',$member_id);
+            });
+        })->where('type','=',$request->get('type'))
+            ->when($timer, function($query) use ($timer){
+                $query->where('timer','=',$timer);
+            })->orderByDesc('created_at')
+            ->limit($limit)->get();
+        return ResponseBuilder::success($search);
     }
 
     /**
