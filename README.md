@@ -34,38 +34,27 @@ docker run --name "dev-mock-ftp-server" -d -p 127.0.0.1:21:21 -p 127.0.0.1:21000
 ```
 
 ### Set up the database
-When the Docker containers are running, open [PhpMyAdmin](http://localhost:8081) at ``http://localhost:8081`` and login with username ``root`` and password ``passw0rd``.
-Run the following SQL Query:
+When the Docker containers are running, you can open [PhpMyAdmin](http://localhost:8081) at ``http://localhost:8081`` and login with username ``root`` and password ``passw0rd`` to administer the database.
+For now, we run initialization scripts to do the generic work:
 ```
-CREATE DATABASE IF NOT EXISTS coolbot_backend;
+docker run --rm --link "dev-mariadb-10.6.4:mariadb" -e DATABASE_PASS=passw0rd docker.io/panubo/mariadb-toolbox:1.6.0 create-user-db coolbot_backend passw0rd
 ```
 
 ### Set up Laravel
 The backend is built on the [Laravel](https://laravel.com/docs/8.x/readme) 8 PHP Framework.
 
-#### Prepare the frameork and serve the web page
+#### Prepare the framework and serve the web page
 To prepare the backend for runtime follow these instructions:
 1. Open ``cmd`` or ``PowerShell`` in the directory where you cloned the backend source code
-2. Run ``cp .env.example .env``
-3. Open ``.env`` in your ``Visial Studio Code`` or your favourite text editor and fill inn all appropriate values (see table below for required fields) and save 
+2. Run ``copy .env.example .env``
+3. Open ``.env`` in your ``Visial Studio Code`` or your favourite text editor and fill inn all appropriate values (if any changes are needed) and save 
 4. Run ``composer install``
 5. Run ``npm install``
-6. Run ``php artisan key:generate``
-7. Run ``php artisan migrate:fresh`` (this can also be run to clean your database of any records, like a "fresh start")
-8. Run ``php artisan serve`` (This step makes a web-site available on [http://localhost:8000](http://localhost:8000))
+6. Run ``cmd /c "set NODE_OPTIONS=--openssl-legacy-provider && cmd /c ^"npm run dev^""`` (this step needs to be re-run every time you change node or javascript components compiled by npm)
+7. Run ``php artisan key:generate --force``
+8. Run ``php artisan migrate:fresh`` (this can also be run to clean your database of any records, like a "fresh start")
+9. Run ``php artisan storage:link`` to set up storage links for web
+10. Run ``docker exec -i dev-mariadb-10.6.4 mysql -ucoolbot_backend -ppassw0rd coolbot_backend < C:/github/CoolBot-Backend/storage/db_seed_development.sql'`` to seed demo data.
+11. Run ``php artisan serve`` (This step makes a web-site available on [http://localhost:8000](http://localhost:8000))
 
-#### Fill out demo data
-The demo data will create a user with username ``user@domain.com`` with the password ``passw0rd`` that can be used to log in to the web interface.
-
-1. Open ``cmd`` or ``PowerShell`` in the directory where you cloned the backend source code
-2. Run ``php artisan tinker`` (This enters a live CLI session with php against the database)
-3. Run 
-   ```
-   $user = new User();
-   $user->name = 'Demo User';
-   $user->email = 'user@domain.com';
-   $user->password = Hash::make('passw0rd');
-   $user->save();
-   $user->createToken('Demo-Token');
-   ```
-4. Copy the ``plainTextToken`` that looks like this ``1|o4fiL63MCmBIfNHJtTczDvLxWwy7MLRchvgRg2t4`` and put it into the ``.env`` file in ``CollBot`s`` source directory as the variable value of ``COOLBOT_BACKEND_API_TOKEN`` parameter. This makes it so the bot can talk to backend.
+All usernames and password for development are stored as [JSON](https://www.w3schools.com/js/js_json_intro.asp) in Azure Key Vault named [TCGC-KV-Development](https://portal.azure.com/#@kvaksrud.it/resource/subscriptions/45acfd74-4aaa-4b0e-a9b1-94cb328c8c1c/resourceGroups/RSG-US-EAST-TCGC/providers/Microsoft.KeyVault/vaults/TCGC-KV-Development/secrets).
