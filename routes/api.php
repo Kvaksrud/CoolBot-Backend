@@ -42,4 +42,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('BankAccount', \App\Http\Controllers\BankAccountController::class)->only([
         'show'
     ]);
+
+    // LaborReply
+    Route::resource('LaborReply', \App\Http\Controllers\LaborReplyController::class)->only([
+        'index','store'
+    ]);
 });
