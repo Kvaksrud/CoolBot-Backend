@@ -1,0 +1,711 @@
+{
+	"info": {
+		"_postman_id": "4b181c83-f9b9-4456-a478-48ad3dd06a2a",
+		"name": "CoolBot-Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Discord Registration",
+			"item": [
+				{
+					"name": "Get registration",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host-url}}/DiscordRegistration/{{your_discord_id}}?guild_id={{guild_id}}&discord_identifier=true",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"DiscordRegistration",
+								"{{your_discord_id}}"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								},
+								{
+									"key": "discord_identifier",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List registrations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host-url}}/DiscordRegistration",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"DiscordRegistration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": {{your_discord_id}},\r\n    \"steam_id\": {{your_fake_steam_id}},\r\n    \"username\": \"My API Registered User\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host-url}}/DiscordRegistration?guild_id={{guild_id}}",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"DiscordRegistration"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Character Sheet",
+			"item": [
+				{
+					"name": "Store Cache",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": {{your_discord_id}},\r\n    \"content\": {\r\n        \"CharacterClass\": \"DiloJuvS\",\r\n        \"DNA\": \"\",\r\n        \"Location_Isle_V3\": \"X=229755.078 Y=46934.441 Z=-74283.320\",\r\n        \"Rotation_Isle_V3\": \"P=0.000000 Y=61.051392 R=0.000000\",\r\n        \"Growth\": \"0.635001\",\r\n        \"Hunger\": \"31\",\r\n        \"Thirst\": \"42\",\r\n        \"Stamina\": \"101\",\r\n        \"Health\": \"358\",\r\n        \"BleedingRate\": \"0\",\r\n        \"Oxygen\": \"40\",\r\n        \"bGender\": true,\r\n        \"bIsResting\": false,\r\n        \"bBrokenLegs\": false,\r\n        \"ProgressionPoints\": \"0\",\r\n        \"ProgressionTier\": \"1\",\r\n        \"UnlockedCharacters\": \"\",\r\n        \"CameraRotation_Isle_V3\": \"P=0.000000 Y=151.051468 R=0.000000\",\r\n        \"CameraDistance_Isle_V3\": \"588.817688\",\r\n        \"SkinPaletteSection1\": 64,\r\n        \"SkinPaletteSection2\": 26,\r\n        \"SkinPaletteSection3\": 34,\r\n        \"SkinPaletteSection4\": 26,\r\n        \"SkinPaletteSection5\": 39,\r\n        \"SkinPaletteSection6\": 254,\r\n        \"SkinPaletteVariation\": \"6.0\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host-url}}/CharacterSheet?guild_id={{guild_id}}&type=cache",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"CharacterSheet"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								},
+								{
+									"key": "type",
+									"value": "cache"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Inject",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": {{your_discord_id}},\r\n    \"content\": {\r\n        \"CharacterClass\": \"DiloJuvS\",\r\n        \"DNA\": \"\",\r\n        \"Location_Isle_V3\": \"X=229755.078 Y=46934.441 Z=-74283.320\",\r\n        \"Rotation_Isle_V3\": \"P=0.000000 Y=61.051392 R=0.000000\",\r\n        \"Growth\": \"0.635001\",\r\n        \"Hunger\": \"31\",\r\n        \"Thirst\": \"42\",\r\n        \"Stamina\": \"101\",\r\n        \"Health\": \"358\",\r\n        \"BleedingRate\": \"0\",\r\n        \"Oxygen\": \"40\",\r\n        \"bGender\": true,\r\n        \"bIsResting\": false,\r\n        \"bBrokenLegs\": false,\r\n        \"ProgressionPoints\": \"0\",\r\n        \"ProgressionTier\": \"1\",\r\n        \"UnlockedCharacters\": \"\",\r\n        \"CameraRotation_Isle_V3\": \"P=0.000000 Y=151.051468 R=0.000000\",\r\n        \"CameraDistance_Isle_V3\": \"588.817688\",\r\n        \"SkinPaletteSection1\": 64,\r\n        \"SkinPaletteSection2\": 26,\r\n        \"SkinPaletteSection3\": 34,\r\n        \"SkinPaletteSection4\": 26,\r\n        \"SkinPaletteSection5\": 39,\r\n        \"SkinPaletteSection6\": 254,\r\n        \"SkinPaletteVariation\": \"6.0\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host-url}}/CharacterSheet?guild_id={{guild_id}}&type=injection",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"CharacterSheet"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								},
+								{
+									"key": "type",
+									"value": "injection"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get sheet",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host-url}}/CharacterSheet/1",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"CharacterSheet",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bank Transaction",
+			"item": [
+				{
+					"name": "Add funds to wallet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"type\": \"deposit\",\r\n    \"target\": \"wallet\",\r\n    \"amount\": 75,\r\n    \"description\": \"Manual funds added through API\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host-url}}/BankTransaction?guild_id={{guild_id}}",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"BankTransaction"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add funds to balance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"type\": \"deposit\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 500,\r\n    \"description\": \"Manual funds added through API\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host-url}}/BankTransaction?guild_id={{guild_id}}",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"BankTransaction"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdraw from balance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"type\": \"withdraw\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 75,\r\n    \"description\": \"Manual funds removed through API\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host-url}}/BankTransaction?guild_id={{guild_id}}",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"BankTransaction"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdraw from wallet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"type\": \"withdraw\",\r\n    \"target\": \"wallet\",\r\n    \"amount\": 75,\r\n    \"description\": \"Manual funds removed through API\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host-url}}/BankTransaction?guild_id={{guild_id}}",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"BankTransaction"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer to balance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 25\r\n}"
+						},
+						"url": {
+							"raw": "{{host-url}}/BankTransaction/Transfer?guild_id={{guild_id}}",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"BankTransaction",
+								"Transfer"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer to wallet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"target\": \"wallet\",\r\n    \"amount\": 25\r\n}"
+						},
+						"url": {
+							"raw": "{{host-url}}/BankTransaction/Transfer?guild_id={{guild_id}}",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"BankTransaction",
+								"Transfer"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send to another bank account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"from_member_id\": \"{{your_discord_id}}\",\r\n    \"to_member_id\": \"{{other_discord_id}}\",\r\n    \"amount\": 25\r\n}"
+						},
+						"url": {
+							"raw": "{{host-url}}/BankTransaction/Send?guild_id={{guild_id}}",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"BankTransaction",
+								"Send"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host-url}}/BankTransaction/Search?guild_id={{guild_id}}&member_id={{your_discord_id}}&type=deposit&timer=labor&limit=25",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"BankTransaction",
+								"Search"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								},
+								{
+									"key": "member_id",
+									"value": "{{your_discord_id}}"
+								},
+								{
+									"key": "type",
+									"value": "deposit",
+									"description": "deposit or withdraw"
+								},
+								{
+									"key": "timer",
+									"value": "labor",
+									"description": "Type of timer, blank = everything"
+								},
+								{
+									"key": "limit",
+									"value": "25",
+									"description": "Defaults to 25 if not specified"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "do !labor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"type\": \"deposit\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 500,\r\n    \"description\": \"This is a !work|!labor example\",\r\n    \"timer\": \"labor\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host-url}}/BankTransaction?guild_id={{guild_id}}",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"BankTransaction"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bank Account",
+			"item": [
+				{
+					"name": "Get Bank Account",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host-url}}/BankAccount/{{your_discord_id}}?guild_id={{guild_id}}&discord_identifier=true",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"BankAccount",
+								"{{your_discord_id}}"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								},
+								{
+									"key": "discord_identifier",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Backend Users",
+			"item": [
+				{
+					"name": "Get self",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host-url}}/user",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "Bearer {{token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host-url",
+			"value": "http://127.0.0.1:8000/api"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "guild_id",
+			"value": ""
+		},
+		{
+			"key": "your_discord_id",
+			"value": ""
+		},
+		{
+			"key": "other_discord_id",
+			"value": ""
+		},
+		{
+			"key": "your_fake_steam_id",
+			"value": "76561100000000001"
+		}
+	]
+}
