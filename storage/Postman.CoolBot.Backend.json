@@ -729,6 +729,49 @@
 			]
 		},
 		{
+			"name": "Labor",
+			"item": [
+				{
+					"name": "Work",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": \"{{my_discord_id}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host-url}}/Labor?guild_id={{guild_id}}",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"Labor"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Get self",
 			"request": {
 				"method": "GET",
