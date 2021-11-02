@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ApiCodes;
+use App\Models\BankAccount;
 use App\Models\BankTransaction;
 use App\Models\DiscordRegistration;
 use App\Models\LaborReply;
@@ -62,6 +63,15 @@ class LaborController extends Controller
             }
 
             $wage = self::wage();
+
+            if($laborReply->target === 'balance')
+                $member->bankAccount->balance = $member->bankAccount->balance + $wage;
+            elseif($laborReply->target === 'wallet')
+                $member->bankAccount->wallet = $member->bankAccount->wallet + $wage;
+            else
+                return ResponseBuilder::error(ApiCodes::INVALID_TYPE);
+            $member->bankAccount->save();
+
             $transaction = $member->bankAccount->transactions()->create([
                 'type' => 'deposit',
                 'target' => $laborReply->target,
