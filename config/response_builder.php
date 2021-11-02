@@ -35,10 +35,12 @@ return [
         \App\ApiCodes::INVALID_INPUT => 'api.invalid-input',
         \App\ApiCodes::NOT_REGISTERED => 'api.not-registered',
         \App\ApiCodes::ALREADY_REGISTERED => 'api.already-registered',
+        \App\ApiCodes::ALREADY_EXISTS => 'api.already-exists',
         \App\ApiCodes::INVALID_TYPE => 'api.invalid-type',
         \App\ApiCodes::NOT_EXISTS => 'api.not-exists',
         \App\ApiCodes::INSUFFICIENT_FUNDS => 'api.insufficient-funds',
         \App\ApiCodes::NO_BANK_ACCOUNT => 'api.no-bank-account',
+        \App\ApiCodes::NO_LABOR_REPLY => 'api.no-approved-labor-replies',
 	],
 
 	/*

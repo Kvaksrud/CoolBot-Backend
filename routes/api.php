@@ -42,4 +42,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('BankAccount', \App\Http\Controllers\BankAccountController::class)->only([
         'show'
     ]);
+
+    // LaborReply
+    Route::resource('LaborReply', \App\Http\Controllers\LaborReplyController::class)->only([
+        'index','store'
+    ]);
+
+    // Options
+    Route::resource('OptionCategory', \App\Http\Controllers\OptionCategoryController::class)->only([
+        'store'
+    ]);
+    Route::resource('Options', \App\Http\Controllers\OptionController::class)->only([
+        'index','show','store'
+    ]);
+
+    // Labor
+    Route::post('/Labor', [\App\Http\Controllers\LaborController::class, 'doLabor']);
 });

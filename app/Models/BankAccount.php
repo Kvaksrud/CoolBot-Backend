@@ -21,6 +21,6 @@ class BankAccount extends Model
 
     public function transactions(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(BankTransaction::class);
+        return $this->hasMany(BankTransaction::class, 'bank_account_id');
     }
 }
