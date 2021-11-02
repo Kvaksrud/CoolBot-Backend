@@ -10,6 +10,7 @@ class Option extends Model
     use HasFactory;
 
     protected $fillable = [
+        'display_name',
         'name',
         'value'
     ];

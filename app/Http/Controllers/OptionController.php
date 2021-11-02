@@ -40,7 +40,7 @@ class OptionController extends Controller
     public function store(Request $request)
     {
         if($request->expectsJson()) {
-            if ($request->has(['category', 'name', 'value']) === false)
+            if ($request->has(['category', 'display_name', 'name', 'value']) === false)
                 return ResponseBuilder::error(ApiCodes::MISSING_PARAMETERS);
 
             $category = OptionCategory::where('id','=',$request->get('category'))->first();
@@ -52,6 +52,7 @@ class OptionController extends Controller
                 return ResponseBuilder::error(ApiCodes::ALREADY_EXISTS,null,$option);
 
             $option = $category->options()->create([
+                'display_name' => $request->get('display_name'),
                 'name' => strtolower($request->get('name')),
                 'value' => $request->get('value'),
             ]);

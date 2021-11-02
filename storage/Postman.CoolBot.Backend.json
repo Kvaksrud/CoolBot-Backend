@@ -712,7 +712,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"category\": 1,\r\n    \"name\": \"labor_maximum\",\r\n    \"value\": \"2000\"\r\n}"
+							"raw": "{\r\n    \"category\": 3,\r\n    \"display_name\": \"Max wage\",\r\n    \"name\": \"maximum_wage\",\r\n    \"value\": \"1100\"\r\n}"
 						},
 						"url": {
 							"raw": "{{host-url}}/Options",
