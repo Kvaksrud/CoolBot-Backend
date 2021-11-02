@@ -1,3 +1,6 @@
+<?php
+$selectedBg = rand(1, 7); // generate random number size of the array
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +14,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <!--Custom styles-->
+    <style type="text/css">
+        html,body{
+            background-image: url('/images/bg-login-<?=$selectedBg?>.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+            font-family: 'Numans', sans-serif;
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="{{asset('css/login.form.css')}}">
 </head>
 <body>
