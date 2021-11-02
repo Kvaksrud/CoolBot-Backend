@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4b181c83-f9b9-4456-a478-48ad3dd06a2a",
+		"_postman_id": "299e0884-99bf-4841-a0b8-a859497dbdd7",
 		"name": "CoolBot-Backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -20,13 +20,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{host-url}}/DiscordRegistration/{{your_discord_id}}?guild_id={{guild_id}}&discord_identifier=true",
+							"raw": "{{host-url}}/DiscordRegistration/{{my_discord_id}}?guild_id={{guild_id}}&discord_identifier=true",
 							"host": [
 								"{{host-url}}"
 							],
 							"path": [
 								"DiscordRegistration",
-								"{{your_discord_id}}"
+								"{{my_discord_id}}"
 							],
 							"query": [
 								{
@@ -78,7 +78,45 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"member_id\": {{your_discord_id}},\r\n    \"steam_id\": {{your_fake_steam_id}},\r\n    \"username\": \"My API Registered User\"\r\n}",
+							"raw": "{\r\n    \"member_id\": {{my_discord_id}},\r\n    \"steam_id\": {{demo_steam_id}},\r\n    \"username\": \"Username of user created from API\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host-url}}/DiscordRegistration?guild_id={{guild_id}}",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"DiscordRegistration"
+							],
+							"query": [
+								{
+									"key": "guild_id",
+									"value": "{{guild_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Other",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": {{other_discord_id}},\r\n    \"steam_id\": {{other_demo_steam_id}},\r\n    \"username\": \"Username of user created from API\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -121,7 +159,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"member_id\": {{your_discord_id}},\r\n    \"content\": {\r\n        \"CharacterClass\": \"DiloJuvS\",\r\n        \"DNA\": \"\",\r\n        \"Location_Isle_V3\": \"X=229755.078 Y=46934.441 Z=-74283.320\",\r\n        \"Rotation_Isle_V3\": \"P=0.000000 Y=61.051392 R=0.000000\",\r\n        \"Growth\": \"0.635001\",\r\n        \"Hunger\": \"31\",\r\n        \"Thirst\": \"42\",\r\n        \"Stamina\": \"101\",\r\n        \"Health\": \"358\",\r\n        \"BleedingRate\": \"0\",\r\n        \"Oxygen\": \"40\",\r\n        \"bGender\": true,\r\n        \"bIsResting\": false,\r\n        \"bBrokenLegs\": false,\r\n        \"ProgressionPoints\": \"0\",\r\n        \"ProgressionTier\": \"1\",\r\n        \"UnlockedCharacters\": \"\",\r\n        \"CameraRotation_Isle_V3\": \"P=0.000000 Y=151.051468 R=0.000000\",\r\n        \"CameraDistance_Isle_V3\": \"588.817688\",\r\n        \"SkinPaletteSection1\": 64,\r\n        \"SkinPaletteSection2\": 26,\r\n        \"SkinPaletteSection3\": 34,\r\n        \"SkinPaletteSection4\": 26,\r\n        \"SkinPaletteSection5\": 39,\r\n        \"SkinPaletteSection6\": 254,\r\n        \"SkinPaletteVariation\": \"6.0\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"member_id\": {{my_discord_id}},\r\n    \"content\": {\r\n        \"CharacterClass\": \"DiloJuvS\",\r\n        \"DNA\": \"\",\r\n        \"Location_Isle_V3\": \"X=229755.078 Y=46934.441 Z=-74283.320\",\r\n        \"Rotation_Isle_V3\": \"P=0.000000 Y=61.051392 R=0.000000\",\r\n        \"Growth\": \"0.635001\",\r\n        \"Hunger\": \"31\",\r\n        \"Thirst\": \"42\",\r\n        \"Stamina\": \"101\",\r\n        \"Health\": \"358\",\r\n        \"BleedingRate\": \"0\",\r\n        \"Oxygen\": \"40\",\r\n        \"bGender\": true,\r\n        \"bIsResting\": false,\r\n        \"bBrokenLegs\": false,\r\n        \"ProgressionPoints\": \"0\",\r\n        \"ProgressionTier\": \"1\",\r\n        \"UnlockedCharacters\": \"\",\r\n        \"CameraRotation_Isle_V3\": \"P=0.000000 Y=151.051468 R=0.000000\",\r\n        \"CameraDistance_Isle_V3\": \"588.817688\",\r\n        \"SkinPaletteSection1\": 64,\r\n        \"SkinPaletteSection2\": 26,\r\n        \"SkinPaletteSection3\": 34,\r\n        \"SkinPaletteSection4\": 26,\r\n        \"SkinPaletteSection5\": 39,\r\n        \"SkinPaletteSection6\": 254,\r\n        \"SkinPaletteVariation\": \"6.0\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -163,7 +201,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"member_id\": {{your_discord_id}},\r\n    \"content\": {\r\n        \"CharacterClass\": \"DiloJuvS\",\r\n        \"DNA\": \"\",\r\n        \"Location_Isle_V3\": \"X=229755.078 Y=46934.441 Z=-74283.320\",\r\n        \"Rotation_Isle_V3\": \"P=0.000000 Y=61.051392 R=0.000000\",\r\n        \"Growth\": \"0.635001\",\r\n        \"Hunger\": \"31\",\r\n        \"Thirst\": \"42\",\r\n        \"Stamina\": \"101\",\r\n        \"Health\": \"358\",\r\n        \"BleedingRate\": \"0\",\r\n        \"Oxygen\": \"40\",\r\n        \"bGender\": true,\r\n        \"bIsResting\": false,\r\n        \"bBrokenLegs\": false,\r\n        \"ProgressionPoints\": \"0\",\r\n        \"ProgressionTier\": \"1\",\r\n        \"UnlockedCharacters\": \"\",\r\n        \"CameraRotation_Isle_V3\": \"P=0.000000 Y=151.051468 R=0.000000\",\r\n        \"CameraDistance_Isle_V3\": \"588.817688\",\r\n        \"SkinPaletteSection1\": 64,\r\n        \"SkinPaletteSection2\": 26,\r\n        \"SkinPaletteSection3\": 34,\r\n        \"SkinPaletteSection4\": 26,\r\n        \"SkinPaletteSection5\": 39,\r\n        \"SkinPaletteSection6\": 254,\r\n        \"SkinPaletteVariation\": \"6.0\"\r\n    }\r\n}",
+							"raw": "{\r\n    \"member_id\": {{my_discord_id}},\r\n    \"content\": {\r\n        \"CharacterClass\": \"DiloJuvS\",\r\n        \"DNA\": \"\",\r\n        \"Location_Isle_V3\": \"X=229755.078 Y=46934.441 Z=-74283.320\",\r\n        \"Rotation_Isle_V3\": \"P=0.000000 Y=61.051392 R=0.000000\",\r\n        \"Growth\": \"0.635001\",\r\n        \"Hunger\": \"31\",\r\n        \"Thirst\": \"42\",\r\n        \"Stamina\": \"101\",\r\n        \"Health\": \"358\",\r\n        \"BleedingRate\": \"0\",\r\n        \"Oxygen\": \"40\",\r\n        \"bGender\": true,\r\n        \"bIsResting\": false,\r\n        \"bBrokenLegs\": false,\r\n        \"ProgressionPoints\": \"0\",\r\n        \"ProgressionTier\": \"1\",\r\n        \"UnlockedCharacters\": \"\",\r\n        \"CameraRotation_Isle_V3\": \"P=0.000000 Y=151.051468 R=0.000000\",\r\n        \"CameraDistance_Isle_V3\": \"588.817688\",\r\n        \"SkinPaletteSection1\": 64,\r\n        \"SkinPaletteSection2\": 26,\r\n        \"SkinPaletteSection3\": 34,\r\n        \"SkinPaletteSection4\": 26,\r\n        \"SkinPaletteSection5\": 39,\r\n        \"SkinPaletteSection6\": 254,\r\n        \"SkinPaletteVariation\": \"6.0\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -239,7 +277,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"type\": \"deposit\",\r\n    \"target\": \"wallet\",\r\n    \"amount\": 75,\r\n    \"description\": \"Manual funds added through API\"\r\n}"
+							"raw": "{\r\n    \"member_id\": \"{{my_discord_id}}\",\r\n    \"type\": \"deposit\",\r\n    \"target\": \"wallet\",\r\n    \"amount\": 75,\r\n    \"description\": \"Funds deposited through API to wallet\"\r\n}"
 						},
 						"url": {
 							"raw": "{{host-url}}/BankTransaction?guild_id={{guild_id}}",
@@ -277,7 +315,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"type\": \"deposit\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 500,\r\n    \"description\": \"Manual funds added through API\"\r\n}"
+							"raw": "{\r\n    \"member_id\": \"{{my_discord_id}}\",\r\n    \"type\": \"deposit\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 500,\r\n    \"description\": \"Funds deposited through API to balance\"\r\n}"
 						},
 						"url": {
 							"raw": "{{host-url}}/BankTransaction?guild_id={{guild_id}}",
@@ -315,7 +353,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"type\": \"withdraw\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 75,\r\n    \"description\": \"Manual funds removed through API\"\r\n}"
+							"raw": "{\r\n    \"member_id\": \"{{my_discord_id}}\",\r\n    \"type\": \"withdraw\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 75,\r\n    \"description\": \"Funds withdrawn from balance through API (deleted)\"\r\n}"
 						},
 						"url": {
 							"raw": "{{host-url}}/BankTransaction?guild_id={{guild_id}}",
@@ -353,7 +391,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"type\": \"withdraw\",\r\n    \"target\": \"wallet\",\r\n    \"amount\": 75,\r\n    \"description\": \"Manual funds removed through API\"\r\n}"
+							"raw": "{\r\n    \"member_id\": \"{{my_discord_id}}\",\r\n    \"type\": \"withdraw\",\r\n    \"target\": \"wallet\",\r\n    \"amount\": 75,\r\n    \"description\": \"Funds withdrawn from wallet through API (deleted)\"\r\n}"
 						},
 						"url": {
 							"raw": "{{host-url}}/BankTransaction?guild_id={{guild_id}}",
@@ -391,7 +429,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 25\r\n}"
+							"raw": "{\r\n    \"member_id\": \"{{my_discord_id}}\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 25\r\n}"
 						},
 						"url": {
 							"raw": "{{host-url}}/BankTransaction/Transfer?guild_id={{guild_id}}",
@@ -430,7 +468,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"target\": \"wallet\",\r\n    \"amount\": 25\r\n}"
+							"raw": "{\r\n    \"member_id\": \"{{my_discord_id}}\",\r\n    \"target\": \"wallet\",\r\n    \"amount\": 25\r\n}"
 						},
 						"url": {
 							"raw": "{{host-url}}/BankTransaction/Transfer?guild_id={{guild_id}}",
@@ -469,7 +507,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"from_member_id\": \"{{your_discord_id}}\",\r\n    \"to_member_id\": \"{{other_discord_id}}\",\r\n    \"amount\": 25\r\n}"
+							"raw": "{\r\n    \"from_member_id\": \"{{my_discord_id}}\",\r\n    \"to_member_id\": \"{{other_discord_id}}\",\r\n    \"amount\": 25\r\n}"
 						},
 						"url": {
 							"raw": "{{host-url}}/BankTransaction/Send?guild_id={{guild_id}}",
@@ -502,7 +540,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host-url}}/BankTransaction/Search?guild_id={{guild_id}}&member_id={{your_discord_id}}&type=deposit&timer=labor&limit=25",
+							"raw": "{{host-url}}/BankTransaction/Search?guild_id={{guild_id}}&member_id={{my_discord_id}}&limit=1&type=deposit&timer=labor",
 							"host": [
 								"{{host-url}}"
 							],
@@ -517,22 +555,20 @@
 								},
 								{
 									"key": "member_id",
-									"value": "{{your_discord_id}}"
+									"value": "{{my_discord_id}}"
+								},
+								{
+									"key": "limit",
+									"value": "1"
 								},
 								{
 									"key": "type",
 									"value": "deposit",
-									"description": "deposit or withdraw"
+									"description": "deposit|withdraw"
 								},
 								{
 									"key": "timer",
-									"value": "labor",
-									"description": "Type of timer, blank = everything"
-								},
-								{
-									"key": "limit",
-									"value": "25",
-									"description": "Defaults to 25 if not specified"
+									"value": "labor"
 								}
 							]
 						}
@@ -557,7 +593,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"member_id\": \"{{your_discord_id}}\",\r\n    \"type\": \"deposit\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 500,\r\n    \"description\": \"This is a !work|!labor example\",\r\n    \"timer\": \"labor\"\r\n}"
+							"raw": "{\r\n    \"member_id\": \"{{my_discord_id}}\",\r\n    \"type\": \"deposit\",\r\n    \"target\": \"balance\",\r\n    \"amount\": 500,\r\n    \"description\": \"Labor done through API\",\r\n    \"timer\": \"labor\"\r\n}"
 						},
 						"url": {
 							"raw": "{{host-url}}/BankTransaction?guild_id={{guild_id}}",
@@ -594,13 +630,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{host-url}}/BankAccount/{{your_discord_id}}?guild_id={{guild_id}}&discord_identifier=true",
+							"raw": "{{host-url}}/BankAccount/{{my_discord_id}}?guild_id={{guild_id}}&discord_identifier=true",
 							"host": [
 								"{{host-url}}"
 							],
 							"path": [
 								"BankAccount",
-								"{{your_discord_id}}"
+								"{{my_discord_id}}"
 							],
 							"query": [
 								{
@@ -619,32 +655,101 @@
 			]
 		},
 		{
-			"name": "Backend Users",
+			"name": "Option Categories",
 			"item": [
 				{
-					"name": "Get self",
+					"name": "Create category",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"My first category!\",\r\n    \"description\": \"This is my first category, and its created through the API\"\r\n}"
+						},
 						"url": {
-							"raw": "{{host-url}}/user",
+							"raw": "{{host-url}}/OptionCategory",
 							"host": [
 								"{{host-url}}"
 							],
 							"path": [
-								"user"
+								"OptionCategory"
 							]
 						}
 					},
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Options",
+			"item": [
+				{
+					"name": "Create option",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": 1,\r\n    \"name\": \"labor_maximum\",\r\n    \"value\": \"2000\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host-url}}/Options",
+							"host": [
+								"{{host-url}}"
+							],
+							"path": [
+								"Options"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get self",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host-url}}/user",
+					"host": [
+						"{{host-url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
@@ -692,11 +797,7 @@
 			"value": ""
 		},
 		{
-			"key": "guild_id",
-			"value": ""
-		},
-		{
-			"key": "your_discord_id",
+			"key": "my_discord_id",
 			"value": ""
 		},
 		{
@@ -704,8 +805,16 @@
 			"value": ""
 		},
 		{
-			"key": "your_fake_steam_id",
+			"key": "guild_id",
+			"value": ""
+		},
+		{
+			"key": "demo_steam_id",
 			"value": "76561100000000001"
+		},
+		{
+			"key": "other_demo_steam_id",
+			"value": "76561100000000002"
 		}
 	]
 }

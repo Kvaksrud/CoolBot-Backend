@@ -15,7 +15,7 @@ class LaborReplyController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response
      */
     public function index(Request $request)
     {
@@ -26,7 +26,9 @@ class LaborReplyController extends Controller
             })->get();
             return ResponseBuilder::success($laborReplies);
         }
-        abort(404);
+
+        $replies = LaborReply::all();
+        return view('laborreply/index')->with('replies',$replies);
     }
 
     /**
