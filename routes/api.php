@@ -55,4 +55,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('Options', \App\Http\Controllers\OptionController::class)->only([
         'index','show','store'
     ]);
+
+    // Labor
+    Route::post('/Labor', [\App\Http\Controllers\LaborController::class, 'doLabor']);
 });

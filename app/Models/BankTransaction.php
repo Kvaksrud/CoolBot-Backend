@@ -27,6 +27,6 @@ class BankTransaction extends Model
 
     public function bankAccount(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(BankAccount::class);
+        return $this->belongsTo(BankAccount::class,'bank_account_id');
     }
 }

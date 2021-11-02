@@ -12,6 +12,7 @@
     public const NOT_REGISTERED = 260;
     public const ALREADY_REGISTERED = 261;
     public const ALREADY_EXISTS = 262;
+    public const TOO_TIRED = 263;
     public const INVALID_TYPE = 270;
     public const INSUFFICIENT_FUNDS = 300;
     public const NO_BANK_ACCOUNT = 301;
