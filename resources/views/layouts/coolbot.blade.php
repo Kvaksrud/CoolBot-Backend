@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Patrick Kvaksrud and CoolBot contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Starter Template · Bootstrap v5.0</title>
+    <title>{{env('APP_NAME', 'CoolBot Backend')}}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
 
@@ -38,5 +38,6 @@
         no auth
     @endauth
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>

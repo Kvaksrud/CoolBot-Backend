@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('Option', \App\Http\Controllers\OptionController::class)->only([
         'index','show'
     ]);
+    Route::resource('DiscordRole', \App\Http\Controllers\DiscordRolesController::class);
+    Route::resource('Dinosaur', \App\Http\Controllers\DinosaurController::class);
 });
 
 require __DIR__.'/auth.php';

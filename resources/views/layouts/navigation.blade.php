@@ -5,6 +5,8 @@
             <li class="nav-item"><a href="{{route('BankAccount.index')}}" class="nav-link link-dark px-2 @if(request()->routeIs('BankAccount.index')) active @endif " aria-current="page">Bank Account</a></li>
             <li class="nav-item"><a href="{{route('LaborReply.index')}}" class="nav-link link-dark px-2 @if(request()->routeIs('LaborReply.index')) active @endif " aria-current="page">Labor Replies</a></li>
             <li class="nav-item"><a href="{{route('Option.index')}}" class="nav-link link-dark px-2 @if(request()->routeIs('Option.index')) active @endif " aria-current="page">Options</a></li>
+            <li class="nav-item"><a href="{{route('DiscordRole.index')}}" class="nav-link link-dark px-2 @if(request()->routeIs('DiscordRole.index')) active @endif " aria-current="page">Discord Roles</a></li>
+            <li class="nav-item"><a href="{{route('Dinosaur.index')}}" class="nav-link link-dark px-2 @if(request()->routeIs('Dinosaur.index')) active @endif " aria-current="page">Dinosaurs</a></li>
                     </ul>
         <ul class="nav">
             @auth()

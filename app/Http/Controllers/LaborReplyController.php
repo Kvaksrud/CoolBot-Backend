@@ -28,7 +28,7 @@ class LaborReplyController extends Controller
         }
 
         $replies = LaborReply::all();
-        return view('laborreply/index')->with('replies',$replies);
+        return view('labor_reply/index')->with('replies',$replies);
     }
 
     /**
