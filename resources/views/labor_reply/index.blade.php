@@ -3,6 +3,9 @@
 @section('header-text') Labor @endsection
 @section('main')
     <div class="row">
+        <x-ui.card.simple header="Replies" title="{{$replies->count()}}" class="col-3 text-center" />
+    </div>
+    <div class="row">
         <div class="col-12">
             <table class="table table-hover">
                 <thead>

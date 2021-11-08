@@ -1,5 +1,7 @@
 <?php
 
+// TODO: REMOVE CONTROLLER
+
 namespace App\Http\Controllers;
 
 use App\ApiCodes;

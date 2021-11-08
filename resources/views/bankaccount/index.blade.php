@@ -3,6 +3,9 @@
 @section('header-text') Bank Accounts @endsection
 @section('main')
     <div class="row">
+        <x-ui.card.simple header="Bank Accounts" title="{{$bankAccounts->count()}}" class="col-3 text-center" />
+    </div>
+    <div class="row">
         <div class="col-12">
             @if(count($bankAccounts) === 0)
                 <em>You have no bank accounts</em>

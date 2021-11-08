@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Dinosaur
+ * Class Teleport
  * @package App\Models
  *
  * @property string display_name
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string sheet
  */
 
-class Dinosaur extends Model
+class Teleport extends Model
 {
     use HasFactory;
 
@@ -27,7 +27,7 @@ class Dinosaur extends Model
 
     public function availableTo(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(DiscordRole::class,'discord_roles_dinosaurs_pivot_table','dinosaur_id','discord_role_id');
+        return $this->belongsToMany(DiscordRole::class,'discord_roles_teleports_pivot_table','teleport_id','discord_role_id');
     }
 
     public function requests(): \Illuminate\Database\Eloquent\Relations\MorphMany

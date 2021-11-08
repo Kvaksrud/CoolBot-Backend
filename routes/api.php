@@ -26,8 +26,10 @@ Route::middleware('auth:sanctum')->group(function () {
     ]);
 
     // Character sheets
-    Route::resource('CharacterSheet', \App\Http\Controllers\CharacterSheetController::class)->only([
-        'show','store'
+    Route::post('/DinosaurRequest/PossibleInjections', [\App\Http\Controllers\DinosaurRequestController::class, 'canInject']);
+    Route::post('/DinosaurRequest/PossibleTeleports', [\App\Http\Controllers\DinosaurRequestController::class, 'canTeleport']);
+    Route::resource('DinosaurRequest', \App\Http\Controllers\DinosaurRequestController::class)->only([
+        'store','update'
     ]);
 
     // Bank Transactions

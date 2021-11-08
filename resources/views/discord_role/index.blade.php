@@ -7,6 +7,9 @@
             <a class="btn btn-primary float-end" href="{{route('DiscordRole.create')}}" role="button">Add role</a>
         </div>
     </div>
+    <div class="row">
+        <x-ui.card.simple header="Roles" title="{{$discordRoles->count()}}" class="col-3 text-center" />
+    </div>
     <div class="row pb-4">
         <div class="col-12">
             <table class="table table-hover">
@@ -15,7 +18,7 @@
                     <th>Friendly name</th>
                     <th>Discord ID</th>
                     <th>Cost modifier</th>
-                    <th>Dinosaurs available</th>
+                    <th>Dinos / Teleports</th>
                     <th>Options</th>
                 </tr>
                 </thead>
@@ -26,7 +29,7 @@
                             <td>{{$role->friendly_name}}</td>
                             <td>{{$role->discord_id}}</td>
                             <td>{{$role->modifier}}</td>
-                            <td>{{$role->availableDinosaurs()->count()}}</td>
+                            <td>{{$role->availableDinosaurs()->count()}} / {{$role->availableTeleports()->count()}}</td>
                             <td>
                                 [<a href="{{route('DiscordRole.show',['DiscordRole'=>$role->id])}}">view</a>]
                                 [<a href="{{route('DiscordRole.edit',['DiscordRole'=>$role->id])}}">edit</a>]

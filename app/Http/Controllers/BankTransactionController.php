@@ -8,6 +8,7 @@ use App\Models\BankTransaction;
 use App\Models\DiscordRegistration;
 use App\RegexPatterns;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use MarcinOrlowski\ResponseBuilder\ResponseBuilder;
 use function Symfony\Component\String\s;
 
@@ -41,29 +42,14 @@ class BankTransactionController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->has(['member_id','guild_id','type','target','amount','description']) === false)
-            return ResponseBuilder::error(ApiCodes::MISSING_PARAMETERS);
-
-        if(in_array($request->get('type'),['withdraw','deposit']) === false)
-            return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['type' => 'Type can be either withdraw or deposit']);
-
-        if(in_array($request->get('target'),['wallet','balance']) === false)
-            return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['type' => 'Type can be either wallet or balance']);
-
-        if(is_numeric($request->get('amount')) === false or $request->get('amount') <= 0)
-            return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['amount' => 'Amount must be an integer of positive value']);
-
-        if(is_string($request->get('guild_id')) === false)
-            return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['guild_id' => 'The guild id must be posted as a string because a limitation in JSON int length']);
-
-        if(is_string($request->get('member_id')) === false)
-            return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['member_id' => 'The member id must be posted as a string because a limitation in JSON int length']);
-
-        if(!preg_match(RegexPatterns::DISCORD_ID_REGEX,$request->get('guild_id')))
-            return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['guild_id'=>'Guild ID must be numeric and between 2-20 characters.']);
-
-        if(!preg_match(RegexPatterns::DISCORD_ID_REGEX,$request->get('member_id')))
-            return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['member_id'=> 'Member ID must be numeric (as a string) and between 2-20 characters.']);
+        $request->validate([
+            'guild_id' => ['required','regex:/^[0-9]{2,20}$/'],
+            'member_id' => ['required','regex:/^[0-9]{2,20}$/'],
+            'type' => ['required',Rule::in(['withdraw','deposit'])],
+            'target' => ['required',Rule::in(['wallet','balance'])],
+            'amount' => ['required','numeric','min:0','not_in:0'],
+            'description' => ['required','string']
+        ]);
 
         // Check if member exists
         $member = DiscordRegistration::with('bankAccount')->where('guild_id','=',$request->get('guild_id'))->where('member_id','=',$request->get('member_id'))->first();

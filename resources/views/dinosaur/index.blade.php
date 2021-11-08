@@ -7,6 +7,9 @@
             <a class="btn btn-primary float-end" href="{{route('Dinosaur.create')}}" role="button">New dinosaur</a>
         </div>
     </div>
+    <div class="row">
+        <x-ui.card.simple header="Dinosaur Sheets" title="{{$dinosaurs->count()}}" class="col-3 text-center" />
+    </div>
     <div class="row pb-4">
         <div class="col-12">
             <table class="table table-hover">

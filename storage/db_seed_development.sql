@@ -137,8 +137,67 @@ INSERT INTO `dinosaurs` (`id`, `code`, `display_name`, `cost`, `sheet`, `created
 (24, 'giga', 'Adult Giganotosaurus', 500, '{\"CharacterClass\":\"GigaAdultS\",\"DNA\":\"\",\"Growth\":\"1.0\",\"Hunger\":\"2285\",\"Thirst\":\"100\",\"Stamina\":\"100\",\"Health\":\"6000\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"GigaAdultS;\"}', '2021-11-07 10:58:25', '2021-11-07 10:58:25'),
 (25, 'sucho', 'Adult Suchomimus', 500, '{\"CharacterClass\":\"SuchoAdultS\",\"DNA\":\"\",\"Growth\":\"1.0\",\"Hunger\":\"500\",\"Thirst\":\"60\",\"Stamina\":\"200\",\"Health\":\"3600\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"SuchoAdultS;\"}', '2021-11-07 10:59:07', '2021-11-07 10:59:07'),
 (26, 'rex', 'Adult Tyrannosaurus Rex', 500, '{\"CharacterClass\":\"RexAdultS\",\"DNA\":\"\",\"Growth\":\"1.0\",\"Hunger\":\"2150\",\"Thirst\":\"90\",\"Stamina\":\"100\",\"Health\":\"6500\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"RexAdultS;\"}', '2021-11-07 10:59:44', '2021-11-07 10:59:44'),
-(27, 'utah', 'Adult Utahraptor', 500, '{\"CharacterClass\":\"UtahAdultS\",\"DNA\":\"\",\"Growth\":\"1.0\",\"Hunger\":\"300\",\"Thirst\":\"60\",\"Stamina\":\"300\",\"Health\":\"1200\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"UtahAdultS;\"}', '2021-11-07 11:00:22', '2021-11-07 11:00:22');
+(27, 'utah', 'Adult Utahraptor', 500, '{\"CharacterClass\":\"UtahAdultS\",\"DNA\":\"\",\"Growth\":\"1.0\",\"Hunger\":\"300\",\"Thirst\":\"60\",\"Stamina\":\"300\",\"Health\":\"1200\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"UtahAdultS;\"}', '2021-11-07 11:00:22', '2021-11-07 11:00:22'),
+(28, 'allojuv', 'Juvenile Allosaurus', 500, '{\"CharacterClass\":\"AlloJuvS\",\"DNA\":\"\",\"Growth\":\"0.5\",\"Hunger\":\"90\",\"Thirst\":\"20\",\"Stamina\":\"60\",\"Health\":\"200\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:45:38', '2021-11-07 19:45:38'),
+(29, 'carnojuv', 'Juvenile Carnotaurus', 500, '{\"CharacterClass\":\"CarnoJuvS\",\"DNA\":\"\",\"Growth\":\"0.6\",\"Hunger\":\"50\",\"Thirst\":\"60\",\"Stamina\":\"280\",\"Health\":\"120\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:46:10', '2021-11-07 19:46:10'),
+(30, 'ceratojuv', 'Juvenile Ceratosaurus', 500, '{\"CharacterClass\":\"CeratoJuvS\",\"DNA\":\"\",\"Growth\":\"0.5\",\"Hunger\":\"75\",\"Thirst\":\"20\",\"Stamina\":\"60\",\"Health\":\"150\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:46:47', '2021-11-07 19:46:47'),
+(31, 'diablojuv', 'Juvenile Diabloceratops', 500, '{\"CharacterClass\":\"DiabloJuvS\",\"DNA\":\"\",\"Growth\":\"0.4\",\"Hunger\":\"60\",\"Thirst\":\"30\",\"Stamina\":\"100\",\"Health\":\"350\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:47:17', '2021-11-07 19:47:17'),
+(32, 'dilojuv', 'Juvenile Dilophosaurus', 500, '{\"CharacterClass\":\"DiloJuvS\",\"DNA\":\"\",\"Growth\":\"0.5\",\"Hunger\":\"83\",\"Thirst\":\"45\",\"Stamina\":\"200\",\"Health\":\"250\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:48:04', '2021-11-07 19:48:04'),
+(33, 'dryojuv', 'Juvenile Dryosaurus', 500, '{\"CharacterClass\":\"DryoJuvS\",\"DNA\":\"\",\"Growth\":\"0.4\",\"Hunger\":\"15\",\"Thirst\":\"10\",\"Stamina\":\"50\",\"Health\":\"7\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:48:31', '2021-11-07 19:48:31'),
+(34, 'gallijuv', 'Juvenile Gallimimus', 500, '{\"CharacterClass\":\"GalliJuvS\",\"DNA\":\"\",\"Growth\":\"0.2\",\"Hunger\":\"20\",\"Thirst\":\"20\",\"Stamina\":\"100\",\"Health\":\"260\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:49:05', '2021-11-07 19:49:05'),
+(35, 'gigajuv', 'Juvenile Giganotosaurus', 500, '{\"CharacterClass\":\"GigaJuvS\",\"DNA\":\"\",\"Growth\":\"0.5\",\"Hunger\":\"80\",\"Thirst\":\"25\",\"Stamina\":\"60\",\"Health\":\"250\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:49:54', '2021-11-07 19:49:54'),
+(36, 'gigasub', 'Subadult Giganotosaurus', 500, '{\"CharacterClass\":\"GigaSubS\",\"DNA\":\"\",\"Growth\":\"0.7\",\"Hunger\":\"500\",\"Thirst\":\"45\",\"Stamina\":\"130\",\"Health\":\"2000\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"GigaSubS;\"}', '2021-11-07 19:50:23', '2021-11-07 19:50:23'),
+(37, 'maiajuv', 'Juvenile Maiasaurus', 500, '{\"CharacterClass\":\"MaiaJuvS\",\"DNA\":\"\",\"Growth\":\"0.3\",\"Hunger\":\"15\",\"Thirst\":\"20\",\"Stamina\":\"80\",\"Health\":\"50\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:50:49', '2021-11-07 19:50:49'),
+(38, 'pachyjuv', 'Juvenile Pachysaurus', 500, '{\"CharacterClass\":\"PachyJuvS\",\"DNA\":\"\",\"Growth\":\"0.5\",\"Hunger\":\"48\",\"Thirst\":\"20\",\"Stamina\":\"100\",\"Health\":\"175\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:51:22', '2021-11-07 19:51:22'),
+(39, 'parajuv', 'Juvenile Parasaurolophus', 500, '{\"CharacterClass\":\"ParaJuvS\",\"DNA\":\"\",\"Growth\":\"0.6\",\"Hunger\":\"40\",\"Thirst\":\"30\",\"Stamina\":\"80\",\"Health\":\"50\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:51:44', '2021-11-07 19:51:44'),
+(40, 'rexjuv', 'Juvenile Tyrannosaurus Rex', 500, '{\"CharacterClass\":\"RexJuvS\",\"DNA\":\"\",\"Growth\":\"0.5\",\"Hunger\":\"75\",\"Thirst\":\"20\",\"Stamina\":\"60\",\"Health\":\"200\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:52:09', '2021-11-07 19:52:09'),
+(41, 'rexsub', 'Subadult Tyrannosaurus Rex', 500, '{\"CharacterClass\":\"RexSubS\",\"DNA\":\"\",\"Growth\":\"0.78\",\"Hunger\":\"500\",\"Thirst\":\"40\",\"Stamina\":\"130\",\"Health\":\"2000\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"RexSubS;\"}', '2021-11-07 19:52:33', '2021-11-07 19:52:33'),
+(42, 'suchojuv', 'Juvenile Suchomimus', 500, '{\"CharacterClass\":\"SuchoJuvS\",\"DNA\":\"\",\"Growth\":\"0.5\",\"Hunger\":\"70\",\"Thirst\":\"50\",\"Stamina\":\"85\",\"Health\":\"350\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:53:14', '2021-11-07 19:53:14'),
+(43, 'trikejuv', 'Juvenile Triceratops', 500, '{\"CharacterClass\":\"TrikeJuvS\",\"DNA\":\"\",\"Growth\":\"0.8\",\"Hunger\":\"60\",\"Thirst\":\"30\",\"Stamina\":\"90\",\"Health\":\"400\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:54:01', '2021-11-07 19:54:01'),
+(44, 'trikesub', 'Subadult Triceratops', 500, '{\"CharacterClass\":\"TrikeSubS\",\"DNA\":\"\",\"Growth\":\"0.8\",\"Hunger\":\"200\",\"Thirst\":\"30\",\"Stamina\":\"90\",\"Health\":\"1250\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"TrikeSubS;\"}', '2021-11-07 19:54:27', '2021-11-07 19:54:27'),
+(45, 'utahjuv', 'Juvenile Utahraptor', 500, '{\"CharacterClass\":\"UtahJuvS\",\"DNA\":\"\",\"Growth\":\"0.6\",\"Hunger\":\"25\",\"Thirst\":\"45\",\"Stamina\":\"150\",\"Health\":\"25\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":false,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":\"\"}', '2021-11-07 19:54:55', '2021-11-07 19:54:55');
 
+--
+-- Dumping data for table `teleports`
+--
+
+INSERT INTO `teleports` (`id`, `display_name`, `code`, `cost`, `sheet`, `created_at`, `updated_at`) VALUES
+(1, 'North Twin Lake', 'northtwin', 500, '{\"bIsResting\":false,\"Location_Isle_V3\":\"X=-406931.906 Y=-187515.766 Z=-72130.531\",\"Rotation_Isle_V3\":\"P=0.000000 Y=-169.899765 R=0.000000\",\"CameraRotation_Isle_V3\":\"P=0.000000 Y=-79.899704 R=0.000000\",\"CameraDistance_Isle_V3\":\"299.995544\"}', '2021-11-07 20:28:01', '2021-11-07 20:35:20'),
+(2, 'Murky Pond', 'murky', 500, '{\"bIsResting\":false,\"Location_Isle_V3\":\"X=305895.844 Y=-106381.602 Z=-27718.631\",\"Rotation_Isle_V3\":\"P=0.000000 Y=5.644394 R=0.000000\",\"CameraRotation_Isle_V3\":\"P=0.000000 Y=95.644478 R=0.000000\",\"CameraDistance_Isle_V3\":\"300.000793\"}', '2021-11-07 21:23:58', '2021-11-07 21:23:58'),
+(3, 'Titan\'s Lake', 'titan', 500, '{\"bIsResting\":false,\"Location_Isle_V3\":\"X=-90332.688 Y=-278700.719 Z=-65220.852\",\"Rotation_Isle_V3\":\"P=0.000000 Y=25.879328 R=0.000000\",\"CameraRotation_Isle_V3\":\"P=0.000000 Y=115.879387 R=0.000000\",\"CameraDistance_Isle_V3\":\"299.993439\"}', '2021-11-07 21:26:37', '2021-11-07 21:26:37');
+
+--
+-- Dumping data for table `discord_roles`
+--
+
+INSERT INTO `discord_roles` (`id`, `friendly_name`, `discord_id`, `modifier`, `created_at`, `updated_at`) VALUES
+(1, 'Everyone', 'everyone', '1.00', '2021-11-07 12:04:04', '2021-11-07 12:39:21');
+
+--
+-- Dumping data for table `discord_roles_dinosaurs_pivot_table`
+--
+
+INSERT INTO `discord_roles_dinosaurs_pivot_table` (`id`, `discord_role_id`, `dinosaur_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 15, NULL, NULL),
+(2, 1, 19, NULL, NULL),
+(3, 1, 26, NULL, NULL),
+(4, 1, 27, NULL, NULL),
+(5, 1, 34, NULL, NULL),
+(6, 1, 43, NULL, NULL),
+(7, 1, 40, NULL, NULL),
+(8, 1, 45, NULL, NULL),
+(9, 1, 44, NULL, NULL),
+(10, 1, 41, NULL, NULL);
+
+--
+-- Dumping data for table `discord_roles_teleports_pivot_table`
+--
+
+INSERT INTO `discord_roles_teleports_pivot_table` (`id`, `discord_role_id`, `teleport_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, NULL, NULL),
+(2, 1, 3, NULL, NULL);
+
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

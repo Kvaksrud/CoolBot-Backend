@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCharacterSheetsTable extends Migration
+class CreateTeleportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateCharacterSheetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('character_sheets', function (Blueprint $table) {
+        Schema::create('teleports', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('discord_registration_id')->index();
-            $table->string('type');
-            $table->json('content');
+            $table->string('display_name');
+            $table->string('code');
+            $table->integer('cost');
+            $table->json('sheet')->comment('Coordinates injected into character sheet');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateCharacterSheetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('character_sheets');
+        Schema::dropIfExists('teleports');
     }
 }

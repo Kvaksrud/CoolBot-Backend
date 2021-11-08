@@ -49,7 +49,7 @@ class BankAccountController extends Controller
      * @param  \App\Models\BankAccount  $bankAccount
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response
      */
-    public function show(Request $request,int $id)
+    public function show(Request $request,$id)
     {
         if($request->expectsJson()) {
             if ($request->has(['discord_identifier'])) {

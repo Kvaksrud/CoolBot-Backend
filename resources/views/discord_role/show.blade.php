@@ -11,7 +11,7 @@
         <x-ui.card.simple header="Modifier" title="{{ $discordRole->modifier }}" class="col-3"/>
     </div>
     @if($discordRole->availableDinosaurs()->count() > 0)
-    <div class="row">
+    <div class="row pb-4">
             <div class="col-12 pb-2">
                 <h2>Available dinosaurs</h2>
             </div>
@@ -22,8 +22,17 @@
             @endforeach
     </div>
     @endif
-    <div class="row">
-
-    </div>
+    @if($discordRole->availableTeleports()->count() > 0)
+        <div class="row">
+            <div class="col-12 pb-2">
+                <h2>Available teleport locations</h2>
+            </div>
+            @foreach($discordRole->availableTeleports as $teleport)
+                <div class="col-3">
+                    {{$teleport->display_name}}
+                </div>
+            @endforeach
+        </div>
+    @endif
 
 @endsection
