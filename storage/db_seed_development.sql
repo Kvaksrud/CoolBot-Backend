@@ -66,8 +66,8 @@ INSERT INTO `bank_transactions` (`id`, `bank_account_id`, `type`, `target`, `amo
 --
 
 INSERT INTO `discord_registrations` (`id`, `guild_id`, `member_id`, `steam_id`, `username`, `created_at`, `updated_at`) VALUES
-(1, '900465453619634236', '234035403009556491', '76561100000000001', 'Username of user created from API', '2021-11-01 07:48:43', '2021-11-01 07:48:43'),
-(2, '900465453619634236', '900465622218063933', '76561100000000002', 'Username of user created from API', '2021-11-01 07:54:06', '2021-11-01 07:54:06');
+(1, '900465453619634236', '234035403009556492', '76561100000000001', 'Username of user created from API', '2021-11-01 07:48:43', '2021-11-01 07:48:43'),
+(2, '900465453619634236', '900465622218063934', '76561100000000002', 'Username of user created from API', '2021-11-01 07:54:06', '2021-11-01 07:54:06');
 
 --
 -- Dumping data for table `labor_replies`
@@ -84,19 +84,23 @@ INSERT INTO `labor_replies` (`id`, `discord_registration_id`, `status`, `status_
 INSERT INTO `option_categories` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
 (1, 'General', 'General options used site wide', '2021-11-02 07:03:22', '2021-11-02 07:03:22'),
 (2, 'Banking', 'Banking specific options', '2021-11-02 07:03:40', '2021-11-02 07:03:40'),
-(3, 'Labor', 'Labor specific options', '2021-11-02 07:03:59', '2021-11-02 07:03:59');
+(3, 'Labor', 'Labor specific options', '2021-11-02 07:03:59', '2021-11-02 07:03:59'),
+(4, 'Dinosaur', 'Dinosaur releated options', '2021-11-08 15:30:44', '2021-11-08 15:30:44');
 
 --
 -- Dumping data for table `options`
 --
 
 INSERT INTO `options` (`id`, `option_category_id`, `display_name`, `name`, `value`, `created_at`, `updated_at`) VALUES
-    (1, 1, 'Registration Enabled', 'registration_enabled', 'false', '2021-11-02 07:07:36', '2021-11-02 07:07:36'),
-    (2, 2, 'Balance Interest', 'balance_interest', '0.03', '2021-11-02 07:08:06', '2021-11-02 07:08:06'),
-    (3, 3, 'Minimum wage', 'minimum_wage', '100', '2021-11-02 07:08:39', '2021-11-02 07:08:39'),
-    (4, 3, 'Maximum wage', 'maximum_wage', '1100', '2021-11-02 07:08:53', '2021-11-02 07:08:53'),
-    (5, 1, 'Password Reset Enabled', 'password_reset_enabled', 'false', '2021-11-02 10:46:34', '2021-11-02 10:46:34'),
-    (6, 3, 'Rest time between labor', 'rest_time', '7200', '2021-11-02 11:32:01', '2021-11-02 11:32:01');
+(1, 1, 'Registration Enabled', 'registration_enabled', 'false', '2021-11-02 07:07:36', '2021-11-02 07:07:36'),
+(2, 2, 'Balance Interest', 'balance_interest', '0.03', '2021-11-02 07:08:06', '2021-11-02 07:08:06'),
+(3, 3, 'Minimum wage', 'minimum_wage', '100', '2021-11-02 07:08:39', '2021-11-02 07:08:39'),
+(4, 3, 'Maximum wage', 'maximum_wage', '1100', '2021-11-02 07:08:53', '2021-11-02 07:08:53'),
+(5, 1, 'Password Reset Enabled', 'password_reset_enabled', 'false', '2021-11-02 10:46:34', '2021-11-02 10:46:34'),
+(6, 3, 'Rest time between labor', 'rest_time', '7200', '2021-11-02 11:32:01', '2021-11-02 11:32:01'),
+(11, 4, 'Rest time between injections', 'injection_wait', '1800', '2021-11-08 15:30:44', '2021-11-08 15:30:44'),
+(12, 4, 'Rest time between teleports', 'teleport_wait', '1800', '2021-11-08 15:30:44', '2021-11-08 15:30:44');
+
 
 --
 -- Dumping data for table `dinosaurs`
