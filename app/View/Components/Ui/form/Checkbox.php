@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\ui\form;
+namespace App\View\Components\Ui\Form;
 
 use Illuminate\View\Component;
 
-class checkbox extends Component
+class Checkbox extends Component
 {
     /**
      * Name used as identifier

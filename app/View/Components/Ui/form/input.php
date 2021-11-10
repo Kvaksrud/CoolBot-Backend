@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\ui\form;
+namespace App\View\Components\Ui\Form;
 
 use Illuminate\View\Component;
 
-class textarea extends Component
+class Input extends Component
 {
     /**
      * Name used as identifier
@@ -25,16 +25,16 @@ class textarea extends Component
     public $placeholder;
 
     /**
-     * height of component
-     * @var string
-     */
-    public $height;
-
-    /**
      * required input
      * @var string
      */
     public $required;
+
+    /**
+     * type input
+     * @var string
+     */
+    public $type;
 
     /**
      * value
@@ -43,7 +43,7 @@ class textarea extends Component
     public $value;
 
     /**
-     * disable input
+     * disabled
      * @var string
      */
     public $disabled;
@@ -53,13 +53,13 @@ class textarea extends Component
      *
      * @return void
      */
-    public function __construct($name,$label,$placeholder,$height="200px",$required=null,$value=null,$disabled=false)
+    public function __construct($name,$label,$placeholder,$type='text',$required=null,$value=null,$disabled=false)
     {
         $this->name = $name;
         $this->label = $label;
         $this->placeholder = $placeholder;
-        $this->height = $height;
         $this->required = $required;
+        $this->type = $type;
         $this->value = $value;
         $this->disabled = $disabled;
     }
@@ -71,6 +71,6 @@ class textarea extends Component
      */
     public function render()
     {
-        return view('components.ui.form.textarea');
+        return view('components.ui.form.input');
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\ui\card;
+namespace App\View\Components\Ui\Card;
 
 use Illuminate\View\Component;
 
-class simple extends Component
+class Simple extends Component
 {
     /**
      * Header
