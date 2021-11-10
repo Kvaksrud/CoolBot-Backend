@@ -1,10 +1,10 @@
 <?php
 
-namespace App\View\Components\ui\page;
+namespace App\View\Components\Ui\Page;
 
 use Illuminate\View\Component;
 
-class header extends Component
+class Header extends Component
 {
     /**
      * Type of Google Font, Material Icons
