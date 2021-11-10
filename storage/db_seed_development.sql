@@ -62,14 +62,6 @@ INSERT INTO `bank_transactions` (`id`, `bank_account_id`, `type`, `target`, `amo
 (10, 1, 'deposit', 'balance', 500, 'Labor done through API', 'labor', '2021-11-01 08:01:47', '2021-11-01 08:01:47');
 
 --
--- Dumping data for table `character_sheets`
---
-
-INSERT INTO `character_sheets` (`id`, `discord_registration_id`, `type`, `content`, `created_at`, `updated_at`) VALUES
-(1, 1, 'cache', '{\"CharacterClass\":\"DiloJuvS\",\"DNA\":null,\"Location_Isle_V3\":\"X=229755.078 Y=46934.441 Z=-74283.320\",\"Rotation_Isle_V3\":\"P=0.000000 Y=61.051392 R=0.000000\",\"Growth\":\"0.635001\",\"Hunger\":\"31\",\"Thirst\":\"42\",\"Stamina\":\"101\",\"Health\":\"358\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":true,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":null,\"CameraRotation_Isle_V3\":\"P=0.000000 Y=151.051468 R=0.000000\",\"CameraDistance_Isle_V3\":\"588.817688\",\"SkinPaletteSection1\":64,\"SkinPaletteSection2\":26,\"SkinPaletteSection3\":34,\"SkinPaletteSection4\":26,\"SkinPaletteSection5\":39,\"SkinPaletteSection6\":254,\"SkinPaletteVariation\":\"6.0\"}', '2021-11-01 07:51:08', '2021-11-01 07:51:08'),
-(2, 1, 'injection', '{\"CharacterClass\":\"DiloJuvS\",\"DNA\":null,\"Location_Isle_V3\":\"X=229755.078 Y=46934.441 Z=-74283.320\",\"Rotation_Isle_V3\":\"P=0.000000 Y=61.051392 R=0.000000\",\"Growth\":\"0.635001\",\"Hunger\":\"31\",\"Thirst\":\"42\",\"Stamina\":\"101\",\"Health\":\"358\",\"BleedingRate\":\"0\",\"Oxygen\":\"40\",\"bGender\":true,\"bIsResting\":false,\"bBrokenLegs\":false,\"ProgressionPoints\":\"0\",\"ProgressionTier\":\"1\",\"UnlockedCharacters\":null,\"CameraRotation_Isle_V3\":\"P=0.000000 Y=151.051468 R=0.000000\",\"CameraDistance_Isle_V3\":\"588.817688\",\"SkinPaletteSection1\":64,\"SkinPaletteSection2\":26,\"SkinPaletteSection3\":34,\"SkinPaletteSection4\":26,\"SkinPaletteSection5\":39,\"SkinPaletteSection6\":254,\"SkinPaletteVariation\":\"6.0\"}', '2021-11-01 07:51:11', '2021-11-01 07:51:11');
-
---
 -- Dumping data for table `discord_registrations`
 --
 
