@@ -20,4 +20,16 @@ class DiscordRegistration extends Model
     {
         return $this->hasOne(BankAccount::class,'discord_registration_id','id');
     }
+
+    public function canAfford($amount,$target='wallet'): bool
+    {
+        if(!$this->bankAccount) return false;
+
+        if($target === 'wallet'){
+            if($this->bankAccount->wallet >= $amount) return true;
+        } elseif($target === 'balance'){
+            if($this->bankAccount->balance >= $amount) return true;
+        }
+        return false;
+    }
 }

@@ -81,6 +81,7 @@ class LaborController extends Controller
                 'timer' => 'labor',
             ]);
 
+            $transaction->description = ($laborReply->text_before.'|'.$laborReply->text_after); // Fix for display in discord
             return ResponseBuilder::success($transaction);
         }
         abort(404);

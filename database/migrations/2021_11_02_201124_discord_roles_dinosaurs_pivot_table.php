@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCharacterSheetsTable extends Migration
+class DiscordRolesDinosaursPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateCharacterSheetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('character_sheets', function (Blueprint $table) {
+        Schema::create('discord_roles_dinosaurs_pivot_table', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('discord_registration_id')->index();
-            $table->string('type');
-            $table->json('content');
+            $table->unsignedBigInteger('discord_role_id')->index();
+            $table->unsignedBigInteger('dinosaur_id')->index();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateCharacterSheetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('character_sheets');
+        Schema::dropIfExists('discord_roles_dinosaurs_pivot_table');
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+// TODO: REMOVE MODEL
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;

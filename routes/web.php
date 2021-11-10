@@ -26,9 +26,7 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function(){
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('BankAccount', \App\Http\Controllers\BankAccountController::class)->only([
         'index','show'
@@ -39,6 +37,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('Option', \App\Http\Controllers\OptionController::class)->only([
         'index','show'
     ]);
+    Route::resource('DiscordRole', \App\Http\Controllers\DiscordRoleController::class);
+    Route::resource('Dinosaur', \App\Http\Controllers\DinosaurController::class);
+    Route::resource('Teleport', \App\Http\Controllers\TeleportController::class);
 });
 
 require __DIR__.'/auth.php';
