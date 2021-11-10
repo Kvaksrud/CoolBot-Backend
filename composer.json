@@ -14,7 +14,8 @@
         "laravel/telescope": "^4.6",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "marcin-orlowski/laravel-api-response-builder": "^9.3"
+        "marcin-orlowski/laravel-api-response-builder": "^9.3",
+        "monicahq/laravel-cloudflare": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
