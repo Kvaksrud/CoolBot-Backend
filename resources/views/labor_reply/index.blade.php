@@ -16,13 +16,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($replies as $reply)
-                    <tr>
-                        <td>{{$reply->suggested_by->username}}</td>
-                        <td>{{$reply->status}}</td>
-                        <td>{{$reply->text_before}} {{rand((int)\App\Http\Controllers\OptionController::getOption('labor','minimum_wage'),(int)\App\Http\Controllers\OptionController::getOption('labor','maximum_wage'))}}$ {{$reply->text_after}}</td>
-                    </tr>
-                    @endforeach
+                    @if($replies->count() > 0)
+                        @foreach($replies as $reply)
+                        <tr>
+                            <td>{{$reply->suggested_by->username}}</td>
+                            <td>{{$reply->status}}</td>
+                            <td>{{$reply->text_before}} {{rand((int)\App\Http\Controllers\OptionController::getOption('labor','minimum_wage'),(int)\App\Http\Controllers\OptionController::getOption('labor','maximum_wage'))}}$ {{$reply->text_after}}</td>
+                        </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="3">No replies yet</td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
         </div>
