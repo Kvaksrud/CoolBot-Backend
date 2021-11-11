@@ -2,7 +2,11 @@
 
 namespace App\Exceptions;
 
+use App\ApiCodes;
+use App\HttpCodes;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use MarcinOrlowski\ResponseBuilder\ResponseBuilder;
 use Throwable;
 use MarcinOrlowski\ResponseBuilder\ExceptionHandlerHelper;
 
@@ -44,4 +48,12 @@ class Handler extends ExceptionHandler
     {
         return ExceptionHandlerHelper::render($request, $e);
     }*/
+
+    protected function invalidJson($request, ValidationException $exception) // Custom response for json
+    {
+        return ResponseBuilder::error(ApiCodes::VALIDATION_FAILED,null,[
+            'message' => 'Input validation failed',
+            'errors' => $exception->errors()
+        ],HttpCodes::BAD_REQUEST);
+    }
 }

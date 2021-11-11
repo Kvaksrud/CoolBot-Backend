@@ -26,7 +26,38 @@ Route::middleware('auth:sanctum')->group(function () {
     ]);
 
     // Character sheets
-    Route::resource('CharacterSheet', \App\Http\Controllers\CharacterSheetController::class)->only([
-        'show','store'
+    Route::post('/DinosaurRequest/PossibleInjections', [\App\Http\Controllers\DinosaurRequestController::class, 'canInject']);
+    Route::post('/DinosaurRequest/PossibleTeleports', [\App\Http\Controllers\DinosaurRequestController::class, 'canTeleport']);
+    Route::resource('DinosaurRequest', \App\Http\Controllers\DinosaurRequestController::class)->only([
+        'store','update'
     ]);
+
+    // Bank Transactions
+    Route::post('BankTransaction/Transfer', [\App\Http\Controllers\BankTransactionController::class, 'transfer']);
+    Route::post('BankTransaction/Send', [\App\Http\Controllers\BankTransactionController::class, 'send']);
+    Route::get('BankTransaction/Search', [\App\Http\Controllers\BankTransactionController::class, 'search']);
+    Route::resource('BankTransaction', \App\Http\Controllers\BankTransactionController::class)->only([
+        'store'
+    ]);
+
+    // BankAccount
+    Route::resource('BankAccount', \App\Http\Controllers\BankAccountController::class)->only([
+        'show'
+    ]);
+
+    // LaborReply
+    Route::resource('LaborReply', \App\Http\Controllers\LaborReplyController::class)->only([
+        'index','store'
+    ]);
+
+    // Options
+    Route::resource('OptionCategory', \App\Http\Controllers\OptionCategoryController::class)->only([
+        'store'
+    ]);
+    Route::resource('Options', \App\Http\Controllers\OptionController::class)->only([
+        'index','show','store'
+    ]);
+
+    // Labor
+    Route::post('/Labor', [\App\Http\Controllers\LaborController::class, 'doLabor']);
 });

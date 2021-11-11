@@ -1,17 +1,14 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
-            </div>
-        </div>
+@extends('layouts.coolbot')
+@section('header-icon') home @endsection
+@section('header-text') Dashboard @endsection
+@section('main')
+    <div class="row">
+        <x-ui.card.simple header="Registrations" title="{{$registrations->count()}}" class="col-3 text-center" />
+        <x-ui.card.simple header="Bank Accounts" title="{{$bankAccounts->count()}}" class="col-3 text-center" />
+        <x-ui.card.simple header="Money in circulation" title="{{$bankAccounts->sum('balance') + $bankAccounts->sum('wallet')}}" class="col-6 text-center" />
+        <x-ui.card.simple header="Labor Replies" title="{{$replies->count()}}" class="col-3 text-center" />
+        <x-ui.card.simple header="Discord Roles" title="{{$discordRoles->count()}}" class="col-3 text-center" />
+        <x-ui.card.simple header="Dinosaur sheets" title="{{$dinosaurs->count()}}" class="col-3 text-center" />
+        <x-ui.card.simple header="Teleport locations" title="{{$teleports->count()}}" class="col-3 text-center" />
     </div>
-</x-app-layout>
+@endsection

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,17 +14,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);*/
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('dashboard');
 });
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function(){
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/user/tokens',[\App\Http\Controllers\UserController::class,'token_index'])->name('user.tokens');
+    Route::resource('BankAccount', \App\Http\Controllers\BankAccountController::class)->only([
+        'index','show'
+    ]);
+    Route::resource('LaborReply', \App\Http\Controllers\LaborReplyController::class)->only([
+        'index','show'
+    ]);
+    Route::resource('Option', \App\Http\Controllers\OptionController::class)->only([
+        'index','show'
+    ]);
+    Route::resource('DiscordRole', \App\Http\Controllers\DiscordRoleController::class);
+    Route::resource('Dinosaur', \App\Http\Controllers\DinosaurController::class);
+    Route::resource('Teleport', \App\Http\Controllers\TeleportController::class);
 });
 
 require __DIR__.'/auth.php';
