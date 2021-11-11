@@ -8,6 +8,7 @@ use App\Models\LaborReply;
 use App\RegexPatterns;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use MarcinOrlowski\ResponseBuilder\ResponseBuilder;
 
 class LaborReplyController extends Controller
@@ -50,23 +51,23 @@ class LaborReplyController extends Controller
     public function store(Request $request)
     {
         if($request->expectsJson()){
-            if($request->has([
-                'guild_id',
-                'member_id',
-                'text_before',
-                'text_after',
-                'target'
-            ]) === false)
-                return ResponseBuilder::error(ApiCodes::MISSING_PARAMETERS);
+            /**
+             * Validate request
+             */
+            $request->validate([
+                'guild_id' => ['required','integer'],
+                'member_id' => ['required','integer'],
+                'text_before' => ['required','string'],
+                'text_after' => ['required','string'],
+                'target' => ['required',Rule::in(['balance','wallet'])]
+            ]);
 
-            if(!preg_match(RegexPatterns::DISCORD_ID_REGEX,$request->get('guild_id')))
-                return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['guild_id'=>'Guild ID must be numeric and between 2-20 characters.']);
-
-            if(!preg_match(RegexPatterns::DISCORD_ID_REGEX,$request->get('member_id')))
-                return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['member_id'=> 'Member ID must be numeric (as a string) and between 2-20 characters.']);
-
-            if(in_array($request->get('target'),['wallet','balance']) === false)
-                return ResponseBuilder::error(ApiCodes::INVALID_INPUT,null,['type' => 'Type can be either wallet or balance']);
+            /**
+             * Check if suggestion already exists
+             */
+            $search = LaborReply::where('text_before','LIKE',$request->get('text_before'))->where('text_after','LIKE',$request->get('text_after'))->get();
+            if($search->count() > 0)
+                return ResponseBuilder::error(ApiCodes::ALREADY_EXISTS);
 
             // Check if member exists
             $member = DiscordRegistration::where('guild_id','=',$request->get('guild_id'))->where('member_id','=',$request->get('member_id'))->first();
